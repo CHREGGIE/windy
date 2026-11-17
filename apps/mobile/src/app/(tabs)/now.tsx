@@ -1,28 +1,87 @@
 import { useState } from 'react';
-import { Alert, ScrollView, View } from 'react-native';
+import { ActivityIndicator, Alert, RefreshControl, ScrollView, View } from 'react-native';
 import { router } from 'expo-router';
+import { useAppState } from '@/state/AppState';
+import { STALE_MS } from '@/state/ForecastStore';
 import { useNow } from '@/data/useNow';
 import { Hero } from '@/components/Hero';
 import { AlertBanner, DaylightCard, DarkBlock, PeakGustCard, RainCard, Segmented, StatusRow, WindFromCard } from '@/components/NowCards';
 import { HourlyCard } from '@/components/Hourly';
 import { RawData } from '@/components/RawData';
-import { Disclaimer, PrimaryButton } from '@/components/ui';
-import { color, size, space } from '@/theme/tokens';
-import { hourLabel } from '@/format';
+import { Card, Disclaimer, PrimaryButton } from '@/components/ui';
 import { Txt } from '@/components/Txt';
+import { color, size, space } from '@/theme/tokens';
+import { clockLabel, hourLabel } from '@/format';
 
 const SEGMENTS = ['Summary', 'Hourly', 'Raw data'] as const;
 type Segment = (typeof SEGMENTS)[number];
 
-/** Now, version 2 (boards 10, 13 and 14). */
+/** A plain notice card for loading, stale and failed states. Ink and grey only: these are not verdicts. */
+function Notice({ title, detail, action }: { title: string; detail: string; action?: { label: string; onPress: () => void } }) {
+  return (
+    <Card style={{ gap: 4 }}>
+      <Txt w="bold" size={15}>
+        {title}
+      </Txt>
+      <Txt size={13} lh={18} c={color.textMuted}>
+        {detail}
+      </Txt>
+      {action ? <PrimaryButton light label={action.label} onPress={action.onPress} style={{ marginTop: 8, borderWidth: 2, borderColor: color.ink }} /> : null}
+    </Card>
+  );
+}
+
+/** Now, version 2 (boards 10, 13 and 14), on live or example data. */
 export default function NowScreen() {
-  const m = useNow();
+  const { activityId, place, settings } = useAppState();
+  const { model: m, entry, refresh } = useNow();
   const [segment, setSegment] = useState<Segment>('Summary');
+  const pill = `${m?.activity.short ?? activityId} · ${place.short}`;
+  const openPicker = () => router.push('/activities');
+
+  if (!m) {
+    // Loading, or every source failed with nothing cached: the verdict is Unknown, never Go.
+    const failed = entry.status === 'error';
+    return (
+      <ScrollView style={{ flex: 1, backgroundColor: color.background }}>
+        <Hero
+          state="UNKNOWN"
+          gustMph={null}
+          steadyMph={null}
+          limitMph={settings[activityId].limitMph}
+          unit="mph"
+          line={failed ? 'No forecast. Check on site.' : 'Getting the forecast…'}
+          pillLabel={pill}
+          onPillPress={openPicker}
+        />
+        <View style={{ padding: space.screen, gap: space.cardGap }}>
+          {failed ? (
+            <Notice
+              title="No forecast right now"
+              detail={`Neither forecast service answered, so the verdict is Unknown. ${entry.error ?? ''}`}
+              action={{ label: 'Try again', onPress: refresh }}
+            />
+          ) : (
+            <View style={{ paddingVertical: 24, alignItems: 'center' }}>
+              <ActivityIndicator color={color.ink} accessibilityLabel="Loading forecast" />
+            </View>
+          )}
+          <Disclaimer />
+        </View>
+      </ScrollView>
+    );
+  }
+
   const unit = m.activity.unit;
+  const f = m.forecast;
+  const stale = f.fetchedAt != null && Date.now() - f.fetchedAt > STALE_MS;
 
   return (
     <View style={{ flex: 1, backgroundColor: color.background }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: size.buttonPrimary + 32 }}>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: size.buttonPrimary + 32 }}
+        refreshControl={f.kind === 'live' ? <RefreshControl refreshing={entry.loading} onRefresh={refresh} /> : undefined}
+      >
         <Hero
           state={m.state}
           gustMph={m.current?.gust ?? null}
@@ -30,8 +89,8 @@ export default function NowScreen() {
           limitMph={m.settings.limitMph}
           unit={unit}
           line={m.line}
-          pillLabel={`${m.activity.short} · ${m.place.short}`}
-          onPillPress={() => router.push('/activities')}
+          pillLabel={pill}
+          onPillPress={openPicker}
         />
 
         <View style={{ paddingTop: 16, paddingHorizontal: space.screen, paddingBottom: 24, gap: space.cardGap }}>
@@ -44,26 +103,36 @@ export default function NowScreen() {
             />
           ))}
 
+          {stale || entry.error ? (
+            <Notice
+              title={stale ? `Forecast from ${clockLabel(f.now.minutes)}` : 'Could not update'}
+              detail={
+                stale
+                  ? 'This forecast is more than 3 hours old. Pull down to refresh before you rely on it.'
+                  : `Showing the last forecast. ${entry.error ?? ''}`
+              }
+              action={{ label: 'Refresh', onPress: refresh }}
+            />
+          ) : null}
+
           <Segmented options={SEGMENTS} value={segment} onChange={setSegment} />
 
           {m.lowConfidence ? (
-            <View accessible style={{ backgroundColor: color.card, borderRadius: 16, padding: 14 }}>
-              <Txt w="bold" size={15}>
-                Low confidence
-              </Txt>
-              <Txt size={13} c={color.textMuted}>
-                Forecasts disagree by more than 5 mph. The higher one is used.
-              </Txt>
-            </View>
+            <Notice title="Low confidence" detail="Forecasts disagree by more than 5 mph in your working hours. The higher one is used." />
           ) : null}
 
           {segment === 'Summary' ? (
             <>
               <View style={{ flexDirection: 'row', gap: space.cardGap }}>
-                <WindFromCard deg={m.direction.deg} abbr={m.direction.abbr} name={m.direction.name} state={m.state} />
+                <WindFromCard direction={m.direction} state={m.state} />
                 <PeakGustCard peak={m.peak} unit={unit} />
               </View>
-              <DarkBlock {...m.current10m} />
+              <DarkBlock
+                humidityPct={f.current?.humidityPct ?? null}
+                uvIndex={f.current?.uvIndex ?? null}
+                tempF={f.current?.tempF ?? null}
+                feelsLikeF={f.current?.feelsLikeF ?? null}
+              />
               <RainCard state={m.state} days={m.days.map((d) => ({ label: d.label, chancePct: d.rainChancePct, amountIn: d.rainAmountIn }))} />
               <DaylightCard sunrise={m.sun.sunrise} sunset={m.sun.sunset} now={m.sun.nowMinutes} state={m.state} />
               {m.lightning.state === 'none' ? (

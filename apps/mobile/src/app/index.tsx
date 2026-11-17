@@ -1,6 +1,8 @@
 import { Redirect } from 'expo-router';
+import { useAppState } from '@/state/AppState';
 
-/** A new user starts at onboarding. Persisting "already onboarded" arrives with accounts. */
+/** New users start at onboarding; everyone else goes straight to Now. */
 export default function Index() {
-  return <Redirect href="/onboarding" />;
+  const { onboarded } = useAppState();
+  return <Redirect href={onboarded ? '/now' : '/onboarding'} />;
 }

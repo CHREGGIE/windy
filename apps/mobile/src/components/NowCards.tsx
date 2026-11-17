@@ -10,13 +10,19 @@ import { ChevronRight, DropIcon, SunIcon, ThermometerIcon, WarningIcon } from '.
 
 const cardTitle = { w: 'bold' as const, size: 15 };
 
-export function WindFromCard({ deg, abbr, name, state }: { deg: number; abbr: string; name: string; state: HourState }) {
+export function WindFromCard({ direction, state }: { direction: { deg: number; abbr: string; name: string } | null; state: HourState }) {
   return (
     <Card style={{ flex: 1, gap: 10 }}>
       <Txt {...cardTitle}>Wind from</Txt>
-      <Compass deg={deg} abbr={abbr} accent={accentSolid(state)} label={`Compass: wind from ${abbr}, ${deg} degrees`} />
+      {direction ? (
+        <Compass deg={direction.deg} abbr={direction.abbr} accent={accentSolid(state)} label={`Compass: wind from ${direction.abbr}, ${direction.deg} degrees`} />
+      ) : (
+        <View style={{ width: 104, height: 104, borderRadius: 52, borderWidth: 2, borderStyle: 'dashed', borderColor: color.unknownOutline, alignItems: 'center', justifyContent: 'center' }}>
+          <Txt w="display" size={28} c={color.textMuted}>?</Txt>
+        </View>
+      )}
       <Txt w="semibold" size={13}>
-        {name}, {deg}°
+        {direction ? `${direction.name}, ${direction.deg}°` : 'Direction unknown'}
       </Txt>
     </Card>
   );
@@ -43,18 +49,33 @@ export function PeakGustCard({ peak, unit }: { peak: HourResult | null; unit: Sp
   );
 }
 
-/** Ink block, three columns: white line icon, value, label. Secondary readings. */
-export function DarkBlock({ humidityPct, uvIndex, tempF, feelsLikeF }: { humidityPct: number; uvIndex: number; tempF: number; feelsLikeF: number }) {
-  const uvWord = uvIndex <= 2 ? 'Low' : uvIndex <= 5 ? 'Moderate' : uvIndex <= 7 ? 'High' : 'Very high';
+/** Ink block, three columns: white line icon, value, label. Secondary readings. Unknown shows "?". */
+export function DarkBlock({
+  humidityPct,
+  uvIndex,
+  tempF,
+  feelsLikeF,
+}: {
+  humidityPct: number | null;
+  uvIndex: number | null;
+  tempF: number | null;
+  feelsLikeF: number | null;
+}) {
+  const uv = uvIndex == null ? null : Math.round(uvIndex);
+  const uvWord = uv == null ? '' : uv <= 2 ? 'Low' : uv <= 5 ? 'Moderate' : uv <= 7 ? 'High' : 'Very high';
   const cols = [
-    { icon: <DropIcon />, value: `${humidityPct}%`, label: 'Humidity' },
-    { icon: <SunIcon />, value: `${uvIndex} ${uvWord}`, label: 'UV index' },
-    { icon: <ThermometerIcon />, value: `${tempF}°F`, label: `Feels like ${feelsLikeF}°` },
+    { icon: <DropIcon />, value: humidityPct == null ? '?' : `${Math.round(humidityPct)}%`, label: 'Humidity' },
+    { icon: <SunIcon />, value: uv == null ? '?' : `${uv} ${uvWord}`, label: 'UV index' },
+    {
+      icon: <ThermometerIcon />,
+      value: tempF == null ? '?' : `${Math.round(tempF)}°F`,
+      label: feelsLikeF == null ? 'Feels like ?' : `Feels like ${Math.round(feelsLikeF)}°`,
+    },
   ];
   return (
     <View style={{ backgroundColor: color.ink, borderRadius: radius.card, paddingVertical: 18, paddingHorizontal: 12, flexDirection: 'row' }}>
       {cols.map((c) => (
-        <View key={c.label} accessible accessibilityLabel={`${c.label}: ${c.value}`} style={{ flex: 1, alignItems: 'center', gap: 6 }}>
+        <View key={c.label} accessible accessibilityLabel={`${c.label}: ${c.value === '?' ? 'unknown' : c.value}`} style={{ flex: 1, alignItems: 'center', gap: 6 }}>
           {c.icon}
           <Txt w="display" size={20} lh={22} c={color.card}>
             {c.value}

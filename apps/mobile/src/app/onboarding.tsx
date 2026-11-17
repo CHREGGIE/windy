@@ -12,17 +12,22 @@ import { color, extra, space } from '@/theme/tokens';
 const STEPS = 4;
 
 /**
- * Board 9, onboarding step 1. Steps 2 to 4 (location permission with the privacy promise, limits,
- * text setup) are not designed yet, so Continue goes straight to the app for now.
+ * Board 9, onboarding step 1. Step 2 (where you work) is built without a board; steps 3 and 4
+ * (limits, text setup) are not designed yet.
  */
 export default function Onboarding() {
   const insets = useSafeAreaInsets();
-  const { onboardingPicks, setOnboardingPicks } = useAppState();
+  const { onboardingPicks, setOnboardingPicks, setOnboarded } = useAppState();
   const [picks, setPicks] = useState<string[]>(onboardingPicks);
   const toggle = (name: string) => setPicks((p) => (p.includes(name) ? p.filter((x) => x !== name) : [...p, name]));
   const finish = (save: boolean) => {
-    if (save) setOnboardingPicks(picks);
-    router.replace('/now');
+    if (save) {
+      setOnboardingPicks(picks);
+      router.push('/onboarding-place');
+    } else {
+      setOnboarded(true);
+      router.replace('/now');
+    }
   };
 
   return (

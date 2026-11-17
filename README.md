@@ -23,21 +23,28 @@ cd apps/mobile && npx expo start
 
 ## What the app shows today
 
-All numbers are **sample data** run through the real engine (`apps/mobile/src/data/samples.ts`).
-The screens say so. Sunrise and sunset are calculated, not sampled.
+**Live forecasts** for your own places: Open-Meteo and NWS, the worse of the two per hour
+(`apps/mobile/src/data/live.ts`). Either source can fail and the other still gives a verdict; if both fail
+the verdict is Unknown. Outside the US only Open-Meteo is used.
+
+**Places**: "Use where I am now" (asks for location only when tapped), or search for where you will be
+(phone geocoder for street addresses, Open-Meteo for town and place names). Places are stored on the device.
+Three **example places** keep the design's go, caution and no-go scenarios on sample data, labelled as such.
+
+**Map**: your places as pins coloured by verdict, with the word under each pin (react-native-maps: Apple
+Maps on iOS, Google Maps on Android). It shows on the phone only; the browser preview shows a placeholder.
 
 | Board | Route | Status |
 |---|---|---|
-| 10 · Now, version 2 (go) | `/now` | Built. Crane · Red Hook |
-| 13 · Now, no-go | `/now` | Built. Crane · Downtown |
-| 14 · Now, active alert | `/now` | Built. Roofing · East New York |
+| 10, 13, 14 · Now, version 2 | `/now` | Built. Loading, stale, failed and Unknown states added |
 | Hourly segment | `/now` → Hourly | Built from the version 1 hourly rows |
-| 11 · Raw data | `/now` → Raw data | Built, with the real derivation |
-| 3 · Pick your work | `/activities` | Built, plus a place list and a limits button (additions) |
-| 12 · Your limits | `/limits` | Built. Changes recompute every verdict |
-| 9 · Onboarding step 1 | `/onboarding` | Built. Steps 2–4 not designed |
-| 8 · Navigation | bottom bar | Built (Android pill style) |
-| Forecast, Map, Places | tabs | **Not designed.** Built from existing components and marked on screen for review |
+| 11 · Raw data | `/now` → Raw data | Built. Shows each source, grid cell, problems and the real derivation |
+| 3 · Pick your work | `/activities` | Built, plus places and buttons for adding a place and limits |
+| 12 · Your limits | `/limits` | Built |
+| 9 · Onboarding step 1 | `/onboarding` | Built |
+| Onboarding step 2, Add a place, Map, Places, Forecast | various | **Not designed.** Built from existing components, marked on screen |
 
-Not done yet: live data (milestone 1), persistence, text messages, loading / offline / stale /
-location-denied states, the wind icon (style not chosen), iOS tab style.
+Not done yet: text messages, onboarding steps 3–4, radar and wind map layers, the wind icon,
+iOS tab style. Activities other than crane use placeholder rules: see `docs/research/ACTIVITY_RULES.md`.
+
+Licensing: Open-Meteo's free tier is non-commercial. A paid plan is needed before launch.

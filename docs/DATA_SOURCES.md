@@ -41,3 +41,24 @@ confirm against live documentation before relying on it. No endpoint here has be
 2. Confirm units and field names against those fixtures, then correct this file.
 3. Confirm Open-Meteo commercial terms.
 4. Start SMS carrier registration.
+
+## Checked against live responses (17 Nov 2026)
+
+Saved in `packages/engine/test/fixtures/` and parsed in `packages/engine/src/adapters.ts`.
+
+- **Open-Meteo forecast**: hourly values keyed by local time when `timezone=auto`, with `utc_offset_seconds`.
+  `wind_speed_unit=mph` returns `mp/h`. `wind_speed_80m` is present. No thunder probability: the adapter
+  treats weather codes 95, 96, 99 as thunderstorms. UV index is available here (not in NWS).
+- **Open-Meteo geocoding**: place names only (towns, parks, landmarks). It does not resolve street addresses.
+  "Red Hook" matches Red Hook, NY (Dutchess County), not the Brooklyn neighbourhood. The app uses the
+  phone's own geocoder (expo-location) for addresses and this for names.
+- **NWS `/points`**: Red Hook resolves to grid `OKX 33,40` (not 34,32 as on the Raw data board), time zone
+  `America/New_York`. Outside the US it returns 404; the app then uses Open-Meteo alone.
+- **NWS gridpoint data**: confirmed metric. Wind and gusts in `wmoUnit:km_h-1`, temperatures in `wmoUnit:degC`,
+  precipitation in `wmoUnit:mm`. Values cover ISO 8601 intervals (`2026-11-17T03:00:00+00:00/PT2H`),
+  which the adapter spreads across each hour. `probabilityOfThunder` exists (percent, no unit given).
+  `lightningActivityLevel` was empty. `windGust`, `ceilingHeight`, `visibility` and wave fields exist.
+- **NWS alerts** `/alerts/active?point=lat,lon`: filtering by point works (was unverified). No active alerts
+  at the time of the fixture.
+- **Thunder threshold**: the app treats NWS thunder probability of 15% or more ("slight chance") as storms
+  possible. This is a proposal for the owner to confirm.
