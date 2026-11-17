@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Now, active alert</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 1720px; box-sizing: border-box; display: flex; flex-direction: column; background: #F4F3EF; color: #14141A; font-family: Inter, system-ui, sans-serif">
+<div style="background: #FFD23F; color: #14141A; border-radius: 0 0 44px 44px; padding: 24px 22px 22px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 18px; letter-spacing: 0.02em">WINDCHECK</div>
+<button type="button" style="border: 0; background: #FFFFFF; color: #14141A; font-family: inherit; font-size: 13px; font-weight: 600; padding: 12px 16px; min-height: 44px; border-radius: 999px">Roofing · East New York</button>
+</div>
+<div style="display: flex; flex-direction: column; margin-top: 18px">
+<div style="display: flex; align-items: baseline; gap: 8px"><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 104px; line-height: 0.95">18</div><div style="font-size: 16px; font-weight: 600">mph gusts</div></div>
+<div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 34px; line-height: 1.2; margin-top: 6px">Caution</div>
+<div style="font-size: 15px; font-weight: 500">Near your limit all afternoon</div>
+</div>
+<div role="img" aria-label="Gusts 18 mph and steady wind 12 mph against a 20 mph limit" style="display: flex; gap: 12px; margin-top: 22px">
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 30px; font-size: 13px; font-weight: 600"><div style="height: 24px; display: flex; align-items: center">Gusts</div><div style="height: 14px; display: flex; align-items: center">Steady</div></div>
+<div style="position: relative; flex: 1; padding-top: 30px; display: flex; flex-direction: column; gap: 12px">
+<div style="position: absolute; left: 50.0%; top: 0; transform: translateX(-50%); font-size: 13px; font-weight: 700; color: #1A3FD0; white-space: nowrap">Your limit 20</div>
+<div style="height: 24px; border-radius: 999px; background: #E0AE00"><div style="width: 45.0%; height: 24px; border-radius: 999px; background: #14141A"></div></div>
+<div style="height: 14px; border-radius: 999px; background: #E0AE00"><div style="width: 30.0%; height: 14px; border-radius: 999px; background: #14141A"></div></div>
+<div style="position: absolute; left: 50.0%; top: 22px; height: 66px; width: 5px; margin-left: -2.5px; border-radius: 999px; background: #1A3FD0"></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-top: 2px"><div>0 calm</div><div>40 mph</div></div>
+</div>
+</div>
+</div>
+
+<div style="padding: 16px 20px 24px; display: flex; flex-direction: column; gap: 12px">
+<button type="button" style="border: 0; background: #14141A; color: #FFFFFF; font-family: inherit; text-align: left; border-radius: 22px; padding: 14px 16px; min-height: 64px; display: flex; align-items: center; gap: 12px"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFD23F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M12 3l10 18H2z"></path><path d="M12 10v5"></path><path d="M12 18h.01"></path></svg><span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 17px">Wind Advisory</span><span style="font-size: 13px; line-height: 1.35">Until 6 PM today. Gusts may rise quickly this afternoon.</span></span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M9 5l7 7-7 7"></path></svg></button>
+<div style="background: #E7E5DE; border-radius: 999px; padding: 4px; display: flex; gap: 4px">
+<button type="button" aria-pressed="true" style="flex: 1; border: 0; background: #14141A; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; min-height: 44px; border-radius: 999px">Summary</button>
+<button type="button" style="flex: 1; border: 0; background: transparent; color: #14141A; font-family: inherit; font-size: 14px; font-weight: 600; min-height: 44px; border-radius: 999px">Hourly</button>
+<button type="button" style="flex: 1; border: 0; background: transparent; color: #14141A; font-family: inherit; font-size: 14px; font-weight: 600; min-height: 44px; border-radius: 999px">Raw data</button>
+</div>
+
+<div style="display: flex; gap: 12px">
+<div style="flex: 1; background: #FFFFFF; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 15px; font-weight: 700">Wind from</div>
+<svg role="img" aria-label="Compass: wind from NW, 315 degrees" width="104" height="104" viewBox="0 0 200 200" fill="none" style="flex-shrink: 0"><circle cx="100" cy="100" r="83" stroke="#14141A" stroke-width="18"></circle><path d="M100.0 10.0L100.0 24.0" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path><path d="M163.6 36.4L156.6 43.4" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path><path d="M190.0 100.0L176.0 100.0" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path><path d="M163.6 163.6L156.6 156.6" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path><path d="M100.0 190.0L100.0 176.0" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path><path d="M36.4 163.6L43.4 156.6" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path><path d="M10.0 100.0L24.0 100.0" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path><path d="M36.4 36.4L43.4 43.4" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path><circle cx="41.3" cy="41.3" r="15" fill="#FFD23F" stroke="#FFFFFF" stroke-width="5"></circle><text x="100" y="114" text-anchor="middle" font-family="'Archivo Black', Inter, sans-serif" font-size="48" fill="#14141A">NW</text></svg>
+<div style="font-size: 13px; font-weight: 600">Northwest, 315°</div>
+</div>
+<div style="flex: 1; background: #FFFFFF; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 15px; font-weight: 700">Peak gust today</div>
+<div style="display: flex; align-items: baseline; gap: 6px"><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 56px; line-height: 1">19</div><div style="font-size: 14px; font-weight: 600">mph</div></div>
+<div style="align-self: flex-start; background: #FFD23F; color: #14141A; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px">Near limit</div>
+<div style="font-size: 13px; font-weight: 600; margin-top: auto">Around 1 PM</div>
+</div>
+</div>
+
+<div style="background: #14141A; color: #FFFFFF; border-radius: 22px; padding: 18px 12px; display: flex">
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"></path></svg><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px; line-height: 1">55%</div><div style="font-size: 12px; font-weight: 600; color: #D6D6DC">Humidity</div></div>
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"></path></svg><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px; line-height: 1">2 Low</div><div style="font-size: 12px; font-weight: 600; color: #D6D6DC">UV index</div></div>
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4v10a4 4 0 1 0 4 0V4a2 2 0 0 0-4 0z"></path></svg><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px; line-height: 1">41°F</div><div style="font-size: 12px; font-weight: 600; color: #D6D6DC">Feels like 35°</div></div>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><div style="font-size: 15px; font-weight: 700">Rain, next days</div><div style="font-size: 13px; color: #555866">Chance and amount</div></div>
+<div style="display: flex; gap: 8px">
+<div style="flex: 1; background: #F4F3EF; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="font-size: 13px; font-weight: 700">Today</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px; line-height: 1">20%</div><div style="width: 100%; height: 6px; border-radius: 999px; background: #E7E5DE"><div style="width: 20%; height: 6px; border-radius: 999px; background: #B88600"></div></div><div style="font-size: 11px; font-weight: 600; color: #555866">0.05 in</div></div><div style="flex: 1; background: #F4F3EF; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="font-size: 13px; font-weight: 700">Wed</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px; line-height: 1">20%</div><div style="width: 100%; height: 6px; border-radius: 999px; background: #E7E5DE"><div style="width: 20%; height: 6px; border-radius: 999px; background: #B88600"></div></div><div style="font-size: 11px; font-weight: 600; color: #555866">0.05 in</div></div><div style="flex: 1; background: #F4F3EF; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="font-size: 13px; font-weight: 700">Thu</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px; line-height: 1">60%</div><div style="width: 100%; height: 6px; border-radius: 999px; background: #E7E5DE"><div style="width: 60%; height: 6px; border-radius: 999px; background: #B88600"></div></div><div style="font-size: 11px; font-weight: 600; color: #555866">0.4 in</div></div><div style="flex: 1; border: 2px dashed #B9B7B0; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="font-size: 13px; font-weight: 700">Fri</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px; line-height: 1; color: #555866">?</div><div style="font-size: 11px; font-weight: 600; color: #555866">Unknown</div></div>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><div style="font-size: 15px; font-weight: 700">Daylight</div><div style="font-size: 13px; color: #555866">3 h 36 min left</div></div>
+<svg role="img" aria-label="Sun path from sunrise to sunset with the sun a little past midday" width="314" height="124" viewBox="0 0 314 124" fill="none" style="align-self: center">
+<path d="M20 110A137 96 0 0 1 294 110" stroke="#E7E5DE" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 12"></path>
+<path d="M20 110A137 96 0 0 1 211.4 21.9" stroke="#B88600" stroke-width="6" stroke-linecap="round"></path>
+<path d="M4 110H310" stroke="#14141A" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="211.4" cy="21.9" r="13" fill="#FFD23F" stroke="#14141A" stroke-width="4"></circle>
+</svg>
+<div style="display: flex; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-size: 12px; color: #555866">Sunrise</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px">6:44 <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600">AM</span></div></div>
+<div style="display: flex; flex-direction: column; gap: 2px; align-items: flex-end"><div style="font-size: 12px; color: #555866">Sunset</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px">4:36 <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600">PM</span></div></div>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px"><div style="flex: 1; display: flex; flex-direction: column; gap: 3px"><div style="font-size: 17px; font-weight: 700">Lightning</div><div style="font-size: 13px; color: #555866">No storms forecast today</div></div><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px"><div style="background: #2050FF; color: #FFFFFF; font-family: 'Archivo Black', Inter, sans-serif; font-size: 20px; line-height: 1; padding: 10px 14px; border-radius: 999px; white-space: nowrap">None</div><div style="font-size: 13px; font-weight: 600">Clear</div></div></div>
+</div>
+<button type="button" style="border: 0; background: #14141A; color: #FFFFFF; font-family: 'Archivo Black', Inter, sans-serif; font-size: 16px; min-height: 56px; border-radius: 999px; margin: 0 20px 16px">Text me if this changes</button>
+<nav aria-label="Main" style="margin-top: auto; background: #FFFFFF; border-top: 1px solid #E3E1DA; padding: 10px 12px 14px; display: flex; justify-content: space-around">
+<button type="button" aria-current="page" style="border: 0; background: transparent; font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 72px; min-height: 56px; font-size: 12px; font-weight: 700; color: #14141A"><div style="width: 56px; height: 30px; border-radius: 999px; background: #14141A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10a3 3 0 1 0-3-3"></path><path d="M3 12h15"></path><path d="M3 16h9a3 3 0 1 1-3 3"></path></svg></div>Now</button>
+<button type="button" style="border: 0; background: transparent; font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 72px; min-height: 56px; font-size: 12px; font-weight: 600; color: #555866"><div style="width: 56px; height: 30px; border-radius: 999px; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555866" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div>Forecast</button>
+<button type="button" style="border: 0; background: transparent; font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 72px; min-height: 56px; font-size: 12px; font-weight: 600; color: #555866"><div style="width: 56px; height: 30px; border-radius: 999px; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555866" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.7-6-10.5a6 6 0 0 1 12 0C18 15.3 12 21 12 21z"></path><circle cx="12" cy="10.5" r="2"></circle></svg></div>Map</button>
+<button type="button" style="border: 0; background: transparent; font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 72px; min-height: 56px; font-size: 12px; font-weight: 600; color: #555866"><div style="width: 56px; height: 30px; border-radius: 999px; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555866" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v16l-6-4-6 4z"></path></svg></div>Places</button>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1720}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

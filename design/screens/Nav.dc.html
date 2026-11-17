@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Navigation</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1000px; height: 560px; box-sizing: border-box; padding: 30px; display: flex; flex-direction: column; gap: 18px; background: #F4F3EF; color: #14141A; font-family: Inter, system-ui, sans-serif">
+<div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 28px">Four tabs and one switcher</div>
+<div style="display: flex; gap: 16px">
+<div style="flex: 1; background: #FFFFFF; border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; color: #555866">TAB 1</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 22px">Now</div><div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 14px; line-height: 1.4">The verdict and gust bars</div><div style="font-size: 14px; line-height: 1.4">Wind direction compass</div><div style="font-size: 14px; line-height: 1.4">Conditions with status pills</div><div style="font-size: 14px; line-height: 1.4">Text me if this changes</div></div></div>
+<div style="flex: 1; background: #FFFFFF; border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; color: #555866">TAB 2</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 22px">Forecast</div><div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 14px; line-height: 1.4">Today hour by hour</div><div style="font-size: 14px; line-height: 1.4">Next 7 days, one verdict each</div><div style="font-size: 14px; line-height: 1.4">Best working window</div><div style="font-size: 14px; line-height: 1.4">Tide table for boating</div></div></div>
+<div style="flex: 1; background: #FFFFFF; border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; color: #555866">TAB 3</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 22px">Map</div><div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 14px; line-height: 1.4">Your pin and its readings</div><div style="font-size: 14px; line-height: 1.4">Radar layer</div><div style="font-size: 14px; line-height: 1.4">Wind layer</div><div style="font-size: 14px; line-height: 1.4">Nearby tide and buoy stations</div></div></div>
+<div style="flex: 1; background: #FFFFFF; border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; color: #555866">TAB 4</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 22px">Places</div><div style="display: flex; flex-direction: column; gap: 6px"><div style="font-size: 14px; line-height: 1.4">Saved sites, jobs and marinas</div><div style="font-size: 14px; line-height: 1.4">Each shows its own verdict</div><div style="font-size: 14px; line-height: 1.4">Add or reorder places</div><div style="font-size: 14px; line-height: 1.4">Tap one to make it the pin</div></div></div>
+</div>
+<div style="background: #14141A; color: #FFFFFF; border-radius: 22px; padding: 18px 20px; display: flex; gap: 32px">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; font-weight: 700">TOP BAR, EVERY TAB</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 18px">Activity and place switcher</div><div style="font-size: 14px; line-height: 1.4">The "Crane · Red Hook" pill opens Pick your work, where the user changes activity or place.</div></div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; font-weight: 700">INSIDE PICK YOUR WORK</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 18px">Limits and settings</div><div style="font-size: 14px; line-height: 1.4">Each activity holds its own limits, units and text-alert times, so there is no separate settings tab.</div></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1000,"height":560}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "windcheck",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "npm run test --workspace @windcheck/engine",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "mobile": "npm run start --workspace mobile"
+  }
+}

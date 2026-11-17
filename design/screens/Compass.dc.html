@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Compass refinements</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1000px; height: 480px; box-sizing: border-box; padding: 28px 30px; display: flex; flex-direction: column; gap: 18px; background: #F4F3EF; color: #14141A; font-family: Inter, system-ui, sans-serif">
+<div style="font-size: 15px; font-weight: 600; color: #555866">Option B, made more compass-like. Same reading: wind from the southwest</div>
+<div style="display: flex; gap: 20px">
+<div style="width: 300px; box-sizing: border-box; background: #FFFFFF; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 16px">B1 · Needle</div>
+<svg role="img" aria-label="Compass with tick marks and a needle whose coloured half points southwest" width="220" height="220" viewBox="0 0 200 200" fill="none" style="align-self: center">
+<circle cx="100" cy="100" r="90" stroke="#E3E1DA" stroke-width="4"></circle>
+<path d="M100.0 16.0L100.0 30.0" stroke="#555866" stroke-width="4" stroke-linecap="round"></path>
+<path d="M121.7 18.9L120.2 24.7" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M142.0 27.3L139.0 32.5" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M159.4 40.6L152.3 47.7" stroke="#555866" stroke-width="3" stroke-linecap="round"></path>
+<path d="M172.7 58.0L167.5 61.0" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M181.1 78.3L175.3 79.8" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M184.0 100.0L170.0 100.0" stroke="#555866" stroke-width="4" stroke-linecap="round"></path>
+<path d="M181.1 121.7L175.3 120.2" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M172.7 142.0L167.5 139.0" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M159.4 159.4L152.3 152.3" stroke="#555866" stroke-width="3" stroke-linecap="round"></path>
+<path d="M142.0 172.7L139.0 167.5" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M121.7 181.1L120.2 175.3" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M100.0 184.0L100.0 170.0" stroke="#555866" stroke-width="4" stroke-linecap="round"></path>
+<path d="M78.3 181.1L79.8 175.3" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M58.0 172.7L61.0 167.5" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M40.6 159.4L47.7 152.3" stroke="#555866" stroke-width="3" stroke-linecap="round"></path>
+<path d="M27.3 142.0L32.5 139.0" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M18.9 121.7L24.7 120.2" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M16.0 100.0L30.0 100.0" stroke="#555866" stroke-width="4" stroke-linecap="round"></path>
+<path d="M18.9 78.3L24.7 79.8" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M27.3 58.0L32.5 61.0" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M40.6 40.6L47.7 47.7" stroke="#555866" stroke-width="3" stroke-linecap="round"></path>
+<path d="M58.0 27.3L61.0 32.5" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<path d="M78.3 18.9L79.8 24.7" stroke="#555866" stroke-width="2" stroke-linecap="round"></path>
+<text x="100.0" y="49.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#14141A">N</text>
+<text x="156.0" y="105.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#555866">E</text>
+<text x="100.0" y="161.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#555866">S</text>
+<text x="44.0" y="105.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#555866">W</text>
+<path d="M53.3 146.7L92.2 92.2L107.8 107.8Z" fill="{{ink}}"></path>
+<path d="M146.7 53.3L92.2 92.2L107.8 107.8Z" fill="#CFCDC6"></path>
+<circle cx="100" cy="100" r="6" fill="#FFFFFF" stroke="#14141A" stroke-width="3"></circle>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-size: 12px; color: #555866">Wind from</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 22px">Southwest <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: #555866">225°</span></div></div>
+</div>
+<div style="width: 300px; box-sizing: border-box; background: #FFFFFF; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 16px">B2 · Bezel</div>
+<svg role="img" aria-label="Compass with a dark bezel, a marker at southwest and SW in the centre" width="220" height="220" viewBox="0 0 200 200" fill="none" style="align-self: center">
+<circle cx="100" cy="100" r="83" stroke="#14141A" stroke-width="18"></circle>
+<path d="M100.0 10.0L100.0 24.0" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+<path d="M163.6 36.4L156.6 43.4" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path>
+<path d="M190.0 100.0L176.0 100.0" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+<path d="M163.6 163.6L156.6 156.6" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path>
+<path d="M100.0 190.0L100.0 176.0" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+<path d="M36.4 163.6L43.4 156.6" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path>
+<path d="M10.0 100.0L24.0 100.0" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+<path d="M36.4 36.4L43.4 43.4" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="41.3" cy="158.7" r="14" fill="{{ink}}" stroke="#FFFFFF" stroke-width="5"></circle>
+<text x="100.0" y="45.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#14141A">N</text>
+<text x="160.0" y="105.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#555866">E</text>
+<text x="100.0" y="165.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#555866">S</text>
+<text x="40.0" y="105.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#555866">W</text>
+<text x="100" y="108" text-anchor="middle" font-family="'Archivo Black', Inter, sans-serif" font-size="40" fill="#14141A">SW</text>
+<text x="100" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#555866">225°</text>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-size: 12px; color: #555866">Wind from</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 22px">Southwest <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: #555866">225°</span></div></div>
+</div>
+<div style="width: 300px; box-sizing: border-box; background: #FFFFFF; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 16px">B3 · Rose</div>
+<svg role="img" aria-label="Compass rose with a marker on the rim at southwest" width="220" height="220" viewBox="0 0 200 200" fill="none" style="align-self: center">
+<circle cx="100" cy="100" r="88" stroke="#E3E1DA" stroke-width="4"></circle>
+<path d="M100.0 16.0L100.0 30.0" stroke="#8A8C96" stroke-width="4" stroke-linecap="round"></path>
+<path d="M159.4 40.6L152.3 47.7" stroke="#8A8C96" stroke-width="3" stroke-linecap="round"></path>
+<path d="M184.0 100.0L170.0 100.0" stroke="#8A8C96" stroke-width="4" stroke-linecap="round"></path>
+<path d="M159.4 159.4L152.3 152.3" stroke="#8A8C96" stroke-width="3" stroke-linecap="round"></path>
+<path d="M100.0 184.0L100.0 170.0" stroke="#8A8C96" stroke-width="4" stroke-linecap="round"></path>
+<path d="M40.6 159.4L47.7 152.3" stroke="#8A8C96" stroke-width="3" stroke-linecap="round"></path>
+<path d="M16.0 100.0L30.0 100.0" stroke="#8A8C96" stroke-width="4" stroke-linecap="round"></path>
+<path d="M40.6 40.6L47.7 47.7" stroke="#8A8C96" stroke-width="3" stroke-linecap="round"></path>
+<path d="M128.3 71.7L111.0 100.0L128.3 128.3L100.0 111.0L71.7 128.3L89.0 100.0L71.7 71.7L100.0 89.0Z" fill="#DAD8D1"></path>
+<path d="M100.0 42.0L108.5 91.5L158.0 100.0L108.5 108.5L100.0 158.0L91.5 108.5L42.0 100.0L91.5 91.5Z" fill="#14141A"></path>
+<text x="100.0" y="35.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#14141A">N</text>
+<text x="170.0" y="105.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#555866">E</text>
+<text x="100.0" y="175.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#555866">S</text>
+<text x="30.0" y="105.0" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#555866">W</text>
+<path d="M37.8 162.2L100 100" stroke="{{ink}}" stroke-width="6" stroke-linecap="round"></path>
+<circle cx="100" cy="100" r="6" fill="#FFFFFF" stroke="{{ink}}" stroke-width="4"></circle>
+<circle cx="37.8" cy="162.2" r="13" fill="{{ink}}" stroke="#FFFFFF" stroke-width="5"></circle>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-size: 12px; color: #555866">Wind from</div><div style="font-family: 'Archivo Black', Inter, sans-serif; font-size: 22px">Southwest <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: #555866">225°</span></div></div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"ink":{"editor":"color","default":"#2050FF"},"$preview":{"width":1000,"height":480}}'>
+class Component extends DCLogic {
+renderVals() {
+return { ink: this.props.ink ?? '#2050FF' };
+}
+}
+</script>
+</body>
+</html>
